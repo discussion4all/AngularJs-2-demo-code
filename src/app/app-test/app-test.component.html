@@ -1,0 +1,93 @@
+<div id="main">
+
+
+<h4>Input Data</h4>
+   
+
+  <form  [formGroup]='userForm'    (ngSubmit)="onSave(userForm.value)" novalidate>
+    <p>Is "myForm" valid ? {{userForm.valid}}  </p>
+
+     <input type="hidden"    formControlName="s_id">
+<table>
+  <tr>
+    <td>Name:-</td>
+        <!-- for input control -->
+    <td> <input type="text" class="form-control"   formControlName="s_name"><br>
+      <!-- for validation  -->
+        <div *ngIf="userForm.controls['s_name'].invalid && (userForm.controls['s_name'].dirty || userForm.controls['s_name'].touched)" class="alert alert-danger">
+            <div *ngIf="userForm.controls['s_name'].errors.required">
+           <font color="red">  Name is required.</font>
+          </div>
+        </div></td>
+  </tr>
+
+  <tr>
+    <td>E-Mail:-</td>
+    <!-- for input control -->
+    <td><input type="text" formControlName="s_email" ><br>
+       <!-- for validation  -->
+           <div *ngIf="userForm.controls['s_email'].invalid && (userForm.controls['s_email'].dirty || userForm.controls['s_email'].touched)" class="alert alert-danger">
+            <div *ngIf="userForm.controls['s_email'].errors.required">
+          <font color="red">  E-mail is required.</font>
+          </div>
+        </div></td>
+  </tr>
+
+  <tr>
+    <td> Password:-</td>
+    <!-- for input control -->
+    <td><input type="password" formControlName="s_password"  ><br>
+       <!-- for validation  -->
+                 <div *ngIf="userForm.controls['s_password'].invalid && (userForm.controls['s_password'].dirty || userForm.controls['s_password'].touched)" class="alert alert-danger">
+            <div *ngIf="userForm.controls['s_password'].errors.required">
+           <font color="red"> Password is required.</font>
+          </div>
+        </div></td>
+  </tr>
+    <tr>
+      <td>Gender:-</td>
+      <td><input type="radio" formControlName="s_gender"  value="Male" >Male
+              <input type="radio" formControlName="s_gender"  value="Female" >Female
+      </td>
+      
+    </tr>
+      <tr>
+        <!-- submit enable when the  -->
+        <td colspan=2><input type="submit" value="{{valbutton}}" [disabled]='!userForm.valid' />  <br></td>
+      </tr>
+   </table>
+    
+     
+
+</form>
+
+    <form #searchForm="ngForm" (ngSubmit)="onSearch(searchForm.value)"> 
+      <!-- data  dispaly in simple table -->
+      <!-- Listing data -->
+    <input type="text" placeholder="Search" name="s_search" [(ngModel)]="s_search"  >
+    <input type="submit" value="Search" />  <br>
+    </form>
+        <!-- table headar -->
+            <h4>Input Listing</h4>  
+          <table border="2"> 
+          <tr>
+            <td>Id</td>
+            <td>Name</td>
+            <td>E-Email</td>
+            <td>Gender</td>
+            <td>Action</td>
+          </tr>
+          <!-- table data -->
+          <tr *ngFor="let kk of Repdata | paginate: { itemsPerPage: 10, currentPage: p };let ind = index">
+            <td>{{ind + 1}}</td>
+            <td>{{kk.s_name}}</td>
+            <td>{{kk.s_email}}</td>
+            <td>{{kk.s_gender}}</td>
+            <td><button (click)="edit(kk)" style="color:black">Edit</button> <button (click)=delete(kk.s_id) style="color:black" >Delete</button></td>
+
+          </tr>
+
+      </table>
+      <!-- just pagination using the pagination npm -->
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+      </div>

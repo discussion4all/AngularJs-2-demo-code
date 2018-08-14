@@ -1,0 +1,25 @@
+<div>
+<!-- data list on datatable -->
+	<table   datatable  [dtOptions]="dtOptions" class="row-border hover">
+    <thead>
+		    <tr>
+            <td>Id</td>
+            <td>Name</td>
+            <td>E-Mail</td>
+            <td>Gender</td>
+            <td></td>
+          </tr>
+         </thead> 
+          <tr *ngFor="let student of students">
+
+          	<td>{{student.s_id }}</td>
+            <td>{{student.s_name | titlecase }}</td>
+            <td>{{student.s_email  }}</td>
+            <td>{{student.s_gender}}</td>
+            <td></td>
+          </tr>
+           <tr *ngIf="student?.length == 0">
+            <td colspan="4" class="no-data-available">No data!</td>
+        </tr>
+	</table>
+</div>

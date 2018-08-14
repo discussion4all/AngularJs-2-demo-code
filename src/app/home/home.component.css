@@ -1,0 +1,16 @@
+div {
+    width: 1024px;
+    border: 25px solid black;
+    padding: 25px;
+    margin: 25px auto;
+}
+
+
+p {
+	border: 5px solid black;
+    display: block;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 0;
+    margin-right: 0;
+}

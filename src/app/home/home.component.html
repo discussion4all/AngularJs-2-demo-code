@@ -1,0 +1,23 @@
+<div>
+		<h1>Home Page, Filter Demo</h1>
+ <p *ngIf="message">{{message.text}}</p>
+ 
+<!-- this is the example of Pipe -->
+ <h5>-->{{"Today's Date" + Time | date: 'd/M/y' }}</h5>
+
+ <h5 ngNonBindable>{{ 3.14159265 | number: '3.1-2' }}</h5>
+    <h5>-->{{ 3.14159265 | number: '3.1-2' }}</h5>
+
+   <h5 ngNonBindable>{{ 'HEMIN' | lowercase }}</h5>
+    <h5>-->{{ 'HEMIN' | lowercase }}</h5> 
+
+    	<h5 ngNonBindable>{{ 'hemin' | uppercase }}</h5>
+    <h5>-->{{ 'hemin' | uppercase }}</h5>
+
+     <h5 ngNonBindable>{{ [1,2,3,4,5,6] | slice:2:-1 }}</h5> 
+    <h5>-->{{ [1,2,3,4,5,6] | slice:2:-1 }}</h5>
+<!-- this is the example of custom Pipe -->
+<h4>Title Case Pipe example</h4>  
+    Hello, My name is {{name | titlecase}} 
+
+</div>

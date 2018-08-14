@@ -1,0 +1,32 @@
+<div id="main">
+  <h1>
+    Welcome to {{title}}!!
+  </h1>
+  <form [formGroup]="angForm" novalidate (ngSubmit)=formData(angForm.value)>
+    <table>
+      <tr>
+        <td> <label class="center-block">Name:</label></td>
+        <td><input type="text" class="form-control" formControlName="name"></td>  
+           <div *ngIf="angForm.controls['name'].invalid && (angForm.controls['name'].dirty || angForm.controls['name'].touched)" class="alert alert-danger">
+            <div *ngIf="angForm.controls['name'].errors.required">
+           <font color="red"> Name is required.</font>
+          </div>
+        </div>
+      </tr>
+      <tr>
+        <td><label class="center-block">Last Name:</label></td>
+        <td> <input type="text" class="form-control" formControlName="lname"></td>
+        <div *ngIf="angForm.controls['lname'].invalid && (angForm.controls['lname'].dirty || angForm.controls['lname'].touched)" class="alert alert-danger">
+            <div *ngIf="angForm.controls['lname'].errors.required">
+          <font color="red"> Last Name is required.</font>
+          </div>
+        </div>
+      </tr>
+    </table>
+      
+              
+        <input type="Submit" value="Save Data" [disabled]='!angForm.valid' >  
+  </form>
+<p>Form value: {{ angForm.value | json }}</p>
+<p>Form status: {{ angForm.status | json }}</p>
+</div>

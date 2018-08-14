@@ -1,0 +1,37 @@
+<div id="main">
+	<form  [formGroup]='userForm'    (ngSubmit)="onSave(userForm.value)" novalidate>
+    
+
+     
+<table>
+  
+
+  <tr>
+    <td>E-Mail:-</td>
+    <td><input type="text" formControlName="s_email" ><br>
+           <div *ngIf="userForm.controls['s_email'].invalid && (userForm.controls['s_email'].dirty || userForm.controls['s_email'].touched)" class="alert alert-danger">
+            <div *ngIf="userForm.controls['s_email'].errors.required">
+          <font color="red">  E-mail is required.</font>
+          </div>
+        </div></td>
+  </tr>
+
+  <tr>
+    <td> Password:-</td>
+    <td><input type="password" formControlName="s_password"  ><br>
+                 <div *ngIf="userForm.controls['s_password'].invalid && (userForm.controls['s_password'].dirty || userForm.controls['s_password'].touched)" class="alert alert-danger">
+            <div *ngIf="userForm.controls['s_password'].errors.required">
+           <font color="red"> Password is required.</font>
+          </div>
+        </div></td>
+  </tr>
+    
+      <tr>
+        <td colspan=2><input type="submit" value="{{valbutton}}" [disabled]='!userForm.valid' />  <br></td>
+      </tr>
+   </table>
+    
+     
+
+</form>
+</div>

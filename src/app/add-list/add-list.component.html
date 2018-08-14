@@ -1,0 +1,22 @@
+<div id="main">
+	<!-- just add in the list withou page loading -->
+	<!-- Form  -->
+	<form  [formGroup]='userForm'    (ngSubmit)="addInList(userForm.value)" novalidate>
+		<table>
+			<tr> 	
+				<td>Enter value</td>
+				<td><input type="text" formControlName="txtvalue"><div *ngIf="userForm.controls['txtvalue'].invalid && (userForm.controls['txtvalue'].dirty || userForm.controls['txtvalue'].touched)" class="alert alert-danger">
+            <div *ngIf="userForm.controls['txtvalue'].errors.required">
+          <font color="red">  Item  required.</font>
+          </div>
+        </div></td>
+				<td><input type="submit" name="btnSubmit" [disabled]='!userForm.valid'></td>
+			</tr>
+		</table>
+	</form>	
+	<!-- listing the array -->
+	<ul>
+		<li *ngFor="let listarr of ListArr">{{listarr.txtvalue}}</li>
+	</ul>
+
+</div>
